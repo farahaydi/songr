@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Albums</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h1>Albums</h1>
+<h1 class="title" >Albums</h1>
 <table>
   <thead>
   <tr>
-    <th>Title</th>
-    <th>Artist</th>
-    <th>Song Count</th>
-    <th>Length (seconds)</th>
-    <th>Image</th>
+    <th class="main">Title</th>
+    <th class="main">Artist</th>
+    <th class="main">Song Count</th>
+    <th class="main">Length (seconds)</th>
+    <th class="main">Image</th>
   </tr>
   </thead>
   <tbody>
@@ -22,8 +23,8 @@
     <td th:text="${album.artist}"></td>
     <td th:text="${album.songCount}"></td>
     <td th:text="${album.length}"></td>
-    <td th:text="${album.imageUrl}"></td>
-  </tr>
+    <td><img th:src="${album.imageUrl}" alt="Album Image" width="100" height="100" /></td>
+    </tr>
   </tbody>
 </table>
 </body>
