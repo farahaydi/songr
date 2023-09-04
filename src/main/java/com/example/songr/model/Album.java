@@ -1,7 +1,6 @@
 package com.example.songr.model;
 
 public class Album {
-    private Long id;
     private String title;
     private String artist;
     private int songCount;
@@ -14,9 +13,6 @@ public class Album {
         this.songCount = songCount;
         this.length = length;
         this.imageUrl = imageUrl;
-    }
-    public Long getId() {
-        return id;
     }
 
     public String getTitle() {
