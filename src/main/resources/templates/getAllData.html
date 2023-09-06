@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Album</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+<h1>Albums</h1>
+<ul th:each="album : ${albums}">
+    <li th:text="'Title: ' + ${album.title}"></li>
+    <li th:text="'Artist: ' + ${album.artist}"></li>
+    <li th:text="'Song Count: ' + ${album.songCount}"></li>
+    <li th:text="'Length: ' + ${album.length}"></li>
+    <li><img th:src="${album.imageUrl}" alt="Album Image" width="100" height="100" /></li>
+
+<!--    <li th:text="'Image URL: ' + ${album.imageUrl}"></li>-->
+</ul>
+
+<form action="/create-Album" method="post">
+    <fieldset>
+        <legend>Add Album</legend>
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title"><br>
+
+        <label for="artist">Artist:</label>
+        <input type="text" name="artist" id="artist"><br>
+
+        <label for="songCount">Song Count:</label>
+        <input type="number" name="songCount" id="songCount"><br>
+
+        <label for="length">Length:</label>
+        <input type="number" name="length" id="length"><br>
+
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" name="imageUrl" id="imageUrl"><br>
+
+        <input type="submit" value="Add Album">
+    </fieldset>
+</form>
+</body>
+</html>
