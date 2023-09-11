@@ -2,45 +2,65 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Album</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Songr Data</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
 </head>
 <body>
-<h1>Albums</h1>
+<h1>Albums and Songs</h1>
 <ul th:each="album : ${albums}">
-    <li th:text="'Title: ' + ${album.title}"></li>
-    <li th:text="'Artist: ' + ${album.artist}"></li>
-    <li th:text="'Song Count: ' + ${album.songCount}"></li>
-    <li th:text="'Length: ' + ${album.length}"></li>
-    <li><img th:src="${album.imageUrl}" alt="Album Image" width="100" height="100" /></li>
-
-<!--    <li th:text="'Image URL: ' + ${album.imageUrl}"></li>-->
+    <li>
+        <h2 th:text="${album.title}"></h2>
+        <p th:text="${album.artist}"></p>
+        <p th:text="${album.songCount}"></p>
+        <p th:text="${album.length}"></p>
+        <img th:src="${album.imageUrl}" alt="Album Cover">
+        <ul>
+            <li th:each="song : ${album.songy}">
+                <p th:text="${song.title}"></p>
+                <p th:text="${song.length}"></p>
+                <p th:text="${song.trackNumber}"></p>
+            </li>
+        </ul>
+    </li>
 </ul>
 
+<h1>Add New Album</h1>
 <form action="/create-Album" method="post">
-    <fieldset>
-        <legend>Add Album</legend>
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title"><br>
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title"><br><br>
 
-        <label for="artist">Artist:</label>
-        <input type="text" name="artist" id="artist"><br>
+    <label for="artist">Artist:</label>
+    <input type="text" id="artist" name="artist"><br><br>
 
-        <label for="songCount">Song Count:</label>
-        <input type="number" name="songCount" id="songCount"><br>
+    <label for="songCount">Song Count:</label>
+    <input type="number" id="songCount" name="songCount"><br><br>
 
-        <label for="length">Length:</label>
-        <input type="number" name="length" id="length"><br>
+    <label for="length">Length:</label>
+    <input type="number" id="length" name="length"><br><br>
 
-        <label for="imageUrl">Image URL:</label>
-        <input type="text" name="imageUrl" id="imageUrl"><br>
+    <label for="imageUrl">Image URL:</label>
+    <input type="text" id="imageUrl" name="imageUrl"><br><br>
 
-        <input type="submit" value="Add Album">
-    </fieldset>
+    <input type="submit" value="Submit">
+</form>
+
+<h1>Add New Song</h1>
+<form action="/add-songs" method="post">
+    <label for="songTitle">Title:</label>
+    <input type="text" id="songTitle" name="title"><br><br>
+
+    <label for="songLength">Length:</label>
+    <input type="number" id="songLength" name="length"><br><br>
+
+    <label for="songTrackNumber">Track Number:</label>
+    <input type="number" id="songTrackNumber" name="trackNumber"><br><br>
+
+    <label for="albumID">Album ID:</label>
+    <input type="number" id="albumID" name="albumID"><br><br>
+
+    <input type="submit" value="Add Song">
 </form>
 </body>
 </html>
+
