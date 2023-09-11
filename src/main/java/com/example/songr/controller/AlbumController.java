@@ -1,7 +1,7 @@
 package com.example.songr.controller;
 
 import com.example.songr.model.Album;
-import com.example.songr.repositores.SongrReopsitores;
+import com.example.songr.repositores.AlbumReopsitores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +25,7 @@ public class AlbumController {
     }
 
 @Autowired
-private SongrReopsitores songrReopsitores;
+private AlbumReopsitores songrReopsitores;
 
     @GetMapping("/")
     public String getAlbums(Model m) {

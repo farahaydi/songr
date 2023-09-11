@@ -2,11 +2,33 @@ package com.example.songr;
 
 import com.example.songr.model.Album;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
+@AutoConfigureMockMvc
 class SongrApplicationTests {
 
 	@Test
@@ -28,6 +50,37 @@ class SongrApplicationTests {
 		album.setTitle("Clouds");
 		assertEquals("Clouds",album.getTitle());
 	}
+
+	//******************************************************************************************************************
+
+	@Autowired
+	MockMvc mockMvc;
+
+	@Test
+	public void testHelloWorld() throws Exception {
+		mockMvc.perform(get("/hello"))
+				.andExpect(status().isOk())
+				.andExpect(content().string("Hello World !"));
+	}
+
+
+//	String artist, int songCount, int length, String imageUrl
+@Test
+public void testCreateAlbum() throws Exception{
+	mockMvc.perform(
+					post("/create-Album")
+							.contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+							.param("title","Let's See")
+							.param("artist","Farah")
+							.param("songCount","3")
+							.param("length","3000")
+							.param("imageUrl","MyImage")
+			)
+			.andExpect(redirectedUrl("/"))
+			.andExpect(status().isFound());
+}
+
+
 
 
 }
