@@ -26,21 +26,21 @@ public class AlbumController {
 
 @Autowired
 private AlbumReopsitores songrReopsitores;
-
     @GetMapping("/")
-    public String getAlbums(Model m) {
-        List<Album> getSong = songrReopsitores.findAll();
-        m.addAttribute("albums", getSong);
-        return "getAllData";
+    public String splashPage() {
+        return "splash";
     }
-
     @PostMapping("/create-Album")
     public RedirectView createAlbum(String title, String artist, int songCount, int length, String imageUrl) {
         Album newAlbum = new Album(title, artist, songCount, length, imageUrl);
         songrReopsitores.save(newAlbum);
-        return new RedirectView("/");
+        return new RedirectView("/get-Album");
     }
-
-
+    @GetMapping("/get-Album")
+    public String getAlbums(Model m) {
+        List<Album> getSong = songrReopsitores.findAll();
+        m.addAttribute("albums", getSong);
+        return "getAlubm";
+    }
 
 }

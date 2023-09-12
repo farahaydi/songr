@@ -11,7 +11,7 @@ public class Song {
     private int length;
     private int trackNumber;
     @ManyToOne
-    private Album albumy;
+    private Album album;
 
     public Song() {
 
@@ -21,7 +21,7 @@ public class Song {
         this.title = title;
         this.length = length;
         this.trackNumber = trackNumber;
-        this.albumy = album;
+        this.album = album;
     }
 
     public long getId() {
@@ -56,11 +56,13 @@ public class Song {
         this.trackNumber = trackNumber;
     }
 
+
+    // Getter and Setter for album
     public Album getAlbum() {
-        return albumy;
+        return album;
     }
 
     public void setAlbum(Album album) {
-        this.albumy = album;
+        this.album = album;
     }
 }

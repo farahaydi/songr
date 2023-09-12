@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Songr Data</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<h1>Song Details</h1>
+
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Length</th>
+        <th>Track Number</th>
+        <th>Album</th>
+    </tr>
+    <th:block th:each="song : ${songs}">
+        <tr>
+            <td th:text="${song.title}"></td>
+            <td th:text="${song.length}"></td>
+            <td th:text="${song.trackNumber}"></td>
+        </tr>
+    </th:block>
+</table>
+
+<h1>Add New Song</h1>
+<form action="/add-songs" method="post">
+    <label for="songTitle">Title:</label>
+    <input type="text" id="songTitle" name="title"><br><br>
+
+    <label for="songLength">Length:</label>
+    <input type="number" id="songLength" name="length"><br><br>
+
+    <label for="songTrackNumber">Track Number:</label>
+    <input type="number" id="songTrackNumber" name="trackNumber"><br><br>
+
+    <label for="albumID">Album ID:</label>
+    <input type="number" id="albumID" name="albumID"><br><br>
+
+    <input type="submit" value="Add Song">
+</form>
+</body>
+</html>
+
