@@ -16,7 +16,7 @@ public class Album {
 
     private int length;
     private String imageUrl;
-    @OneToMany(mappedBy = "albumy", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
     private List <Song> songy;
 
     public Album(String title, String artist, int songCount, int length, String imageUrl) {
@@ -29,13 +29,6 @@ public class Album {
 
     public Album() {
         System.out.println("Set Data Correctly");
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
     public List<Song> getSongy() {
         return songy;
