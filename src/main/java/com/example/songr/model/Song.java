@@ -17,19 +17,10 @@ public class Song {
 
     }
 
-    public Song( String title, int length, int trackNumber, Album album) {
+    public Song( String title, int length, int trackNumber) {
         this.title = title;
         this.length = length;
         this.trackNumber = trackNumber;
-        this.album = album;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getTitle() {

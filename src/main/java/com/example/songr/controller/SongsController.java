@@ -22,11 +22,10 @@ public class SongsController {
     public RedirectView addSongs(String title, int length, int trackNumber, Long albumID)
     {
         Album aa= albumReopsitores
-                .findById(albumID)
-                .orElseThrow(() -> new AlbumNotFoundException("There is no id matching with this album"));
-
-        Song ss= new Song(title,length,trackNumber,aa);
-        songRepository.save(ss);
+                .findByTitle(title);
+        Song song= new Song(title,length,trackNumber);
+        song.setAlbum(aa);
+        songRepository.save(song);
         return new RedirectView("/get-Songs");
     }
     @GetMapping("/get-Songs")
