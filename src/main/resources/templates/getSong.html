@@ -14,7 +14,6 @@
         <th>Title</th>
         <th>Length</th>
         <th>Track Number</th>
-        <th>Album</th>
     </tr>
     <th:block th:each="song : ${songs}">
         <tr>
@@ -36,8 +35,8 @@
     <label for="songTrackNumber">Track Number:</label>
     <input type="number" id="songTrackNumber" name="trackNumber"><br><br>
 
-    <label for="albumID">Album ID:</label>
-    <input type="number" id="albumID" name="albumID"><br><br>
+<!--    <label for="albumID">Album ID:</label>-->
+<!--    <input type="number" id="albumID" name="albumID"><br><br>-->
 
     <input type="submit" value="Add Song">
 </form>

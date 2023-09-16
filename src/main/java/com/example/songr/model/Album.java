@@ -8,7 +8,6 @@ public class Album {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name = "nameOfCookie", nullable = false)
     private String title;
     private String artist;
