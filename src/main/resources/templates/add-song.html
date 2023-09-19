@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Song</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    max-width: 500px;
+    margin: auto;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004080;
+}
+
+  </style>
+</head>
+<body>
+<h1>Add Song to Album: <span th:text="${album.title}"></span></h1>
+
+<form th:action="@{'/albums/' + ${album.id} + '/addSong'}" method="post">
+  <input type="hidden" name="albumId" th:value="${album.id}">
+
+  <label for="songTitle">Song Title:</label>
+  <input type="text" name="title" id="songTitle"><br>
+
+  <label for="songLength">Length:</label><br>
+  <input type="text" name="length" id="songLength">
+
+  <label for="trackNumber">Track Number:</label>
+  <input type="number" name="trackNumber" id="trackNumber"><br>
+
+  <input type="submit" value="Add Song To Album">
+</form>
+
+</body>
+</html>
