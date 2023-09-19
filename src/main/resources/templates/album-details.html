@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Album Details</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+li p {
+    margin: 0;
+}
+
+li p:first-child {
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+  </style>
+</head>
+<body>
+<h1 th:text="${album.title}"></h1>
+<p th:text="${album.artist}"></p>
+<p th:text="${album.songCount + ' songs, ' + album.length + ' seconds'}"></p>
+
+<h2>Songs:</h2>
+<ul>
+  <li th:each="song : ${album.songs}">
+    <p th:text="${song.title}"></p>
+    <p th:text="${song.length + ' seconds'}"></p>
+    <p th:text="${'Track ' + song.trackNumber}"></p>
+  </li>
+</ul>
+</body>
+</html>

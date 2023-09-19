@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Songs</title>
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    color: #555;
+}
+
+  </style>
+</head>
+<body>
+<h1>Songs</h1>
+<ul>
+  <li th:each="song : ${songs}">
+    <h2 th:text="${song.title}"></h2>
+    <p th:text="${song.length + ' seconds'}"></p>
+    <p th:text="${'Track ' + song.trackNumber}"></p>
+  </li>
+</ul>
+</body>
+</html>

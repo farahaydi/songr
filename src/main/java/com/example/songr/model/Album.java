@@ -5,75 +5,75 @@ import java.util.List;
 
 @Entity
 public class Album {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "nameOfCookie", nullable = false)
-    private String title;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long albumId;
+    @Column(name = "title")
+    private String albumTitle;
     private String artist;
     private int songCount;
-
-    private int length;
+    @Column(name = "length")
+    private int albumLength;
     private String imageUrl;
-    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
-    private List <Song> songy;
 
-    public Album(String title, String artist, int songCount, int length, String imageUrl) {
-        this.title = title;
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+    private List<Song> songs;
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public Album(String albumTitle, String artist, int songCount, int albumLength, String imageUrl) {
+        this.albumTitle = albumTitle;
         this.artist = artist;
         this.songCount = songCount;
-        this.length = length;
+        this.albumLength = albumLength;
         this.imageUrl = imageUrl;
     }
 
     public Album() {
-        System.out.println("Set Data Correctly");
-    }
-    public List<Song> getSongy() {
-        return songy;
-    }
-
-    public void setSongy(List<Song> songy) {
-        this.songy = songy;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public void setSongCount(int songCount) {
-        this.songCount = songCount;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public String getTitle() {
-        return title;
+        return albumTitle;
+    }
+
+    public void setTitle(String albumTitle) {
+        this.albumTitle = albumTitle;
     }
 
     public String getArtist() {
         return artist;
     }
 
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
     public int getSongCount() {
         return songCount;
     }
 
+    public void setSongCount(int songCount) {
+        this.songCount = songCount;
+    }
+
     public int getLength() {
-        return length;
+        return albumLength;
+    }
+
+    public void setLength(int albumLength) {
+        this.albumLength = albumLength;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+    public Long getId() {return albumId;}
+
 }
